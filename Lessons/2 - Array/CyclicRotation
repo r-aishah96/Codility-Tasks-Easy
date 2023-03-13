@@ -1,0 +1,46 @@
+// you can also use imports, for example:
+import java.util.*;
+
+// you can write to stdout for debugging purposes, e.g.
+// System.out.println("this is a debug message");
+
+class Solution {
+    public int[] solution(int[] A, int K) {
+        // Implement your solution here
+
+        if (K == 0){
+            return A;
+        }
+
+        if (A.length == 0 || A.length == 1){
+            return A;
+        }
+
+        int store1 = 0;
+        int tempStore = 0;
+
+        for (int i=0; i<K; i++){
+            for (int j=0; j<A.length; j++){
+
+                if (j != 0 && j != A.length - 1){
+
+                    tempStore = store1;
+                    store1 = A[j+1];
+                    A[j+1] = tempStore;
+                }
+
+                else if (j == A.length -1){
+                    A[0] = store1;
+                }
+
+                else if (j == 0){
+                    store1 = A[j+1];
+                    A[j+1] = A[j];
+                }
+
+            }
+        }
+
+        return A;
+    }
+}
